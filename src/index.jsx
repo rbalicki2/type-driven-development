@@ -7,7 +7,7 @@ import { render } from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 // $FlowFixMe
 import { Grid, Row, Col } from 'react-bootstrap';
-import Routes from 'src/routes';
+import Routes from 'src/Routes';
 
 render(<Grid><Row><Col xs={12}><Routes /></Col></Row></Grid>,
   document.getElementById('app'));
