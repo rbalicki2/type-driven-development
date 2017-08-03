@@ -180,7 +180,7 @@ This means that an object of type `MyState` cannot have any extra properties. (T
 
 ## Part 1: Leaning on flow for refactoring
 
-As we get started, please check out the tags `v1.1`, `v1.2`, etc. depending on the step you are on, and run `npm run flow:watch` and `npm start`. Navigate to `localhost:3000`.
+As we get started, please check out the tags `v1.1`, `v1.2`, etc. depending on the step you are on, and run `npm run flow:watch` and `npm start`. Navigate to `localhost:3000/#/form`.
 
 In this problem, we will do the following:
 
@@ -221,7 +221,7 @@ Now, we introduce a refactor.
 
 ## Part 2: Using Union types for to prevent logic errors
 
-As we get started, please check out the tags `v2.1`, `v2.2`, etc. depending on the step you are on, and run `npm run flow:watch` and `npm start`. Navigate to `localhost:3000`.
+As we get started, please check out the tags `v2.1`, `v2.2`, etc. depending on the step you are on, and run `npm run flow:watch` and `npm start`. Navigate to `localhost:3000/#/union`.
 
 ### Step 1: Defining our types
 
