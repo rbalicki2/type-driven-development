@@ -56,9 +56,12 @@ export default {
       // scss
       { test: /\.scss$/, loader: 'style!css!sass' },
 
+      // css
+      { test: /\.css$/, loader: 'style!css' },
+
       // images
       {
-        test: /\.(jpeg|png|jpg|svg|ico)$/,
+        test: /\.(jpeg|png|jpg|svg|ico|eot|ttf|woff|woff2)$/,
         loader: `file?name=${staticFolderWithSlash}/[name].[ext]`,
       },
     ],
