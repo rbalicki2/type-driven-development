@@ -194,7 +194,6 @@ In this problem, we will do the following:
 > This is tag `v1.1`
 
 We define all of our types in `src/form/form-types` and some utility functions in `src/form/form-utilities`.
-We will be doing our work in the context of the following use case:
 
 ### Step 2: Writing the components
 
