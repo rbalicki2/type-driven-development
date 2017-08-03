@@ -9,6 +9,16 @@ In this presentation, I'm going to introduce type driven development with flow. 
 * Introduce typos, and see how flow catches them.
 * Change our API, and show how flow guides us through a refactor until the component is in a valid state.
 
+Separately, we are going to show a user interface where a each customer in a list can either be visible, or invisible. If visible, it has an optional `displayName` parameter. I will demonstrate that flow prevents us from ever having a customer whose status is `invisible` with a `displayName`, or `visible` without a `displayName`.
+
+## What is type driven development?
+
+Type driven development is a concept I borrowed from [this book](https://www.manning.com/books/type-driven-development-with-idris). In this presentation, it will mean:
+
+* Defining types explicitly and in advance, being as restrictive as possible.
+* Leaning heavily on the flow type checker to validate our code.
+* Refactors should be type-first. The type definitions should change, and then *flow will direct us to all parts of the code that are broken.*
+
 ## What is Flow?
 
 Flow is a static type checker for Javascript. It allows us to catch a class of errors at compile time, such as:
@@ -42,14 +52,6 @@ const isValidCustomer: (customer: Customer) => boolean { /* ... */ };
 Properly set up, your IDE will now help you with autocompletion.
 
 This presentation presumes a working understanding of static typing. Your intuitions from Java should serve you well.
-
-## What is type driven development?
-
-Type driven development is a concept I borrowed from [this book](https://www.manning.com/books/type-driven-development-with-idris). In this presentation, it will mean:
-
-* Defining types explicitly and in advance, being as restrictive as possible.
-* Leaning heavily on the flow type checker to validate our code.
-* Refactors should be type-first. The type definitions should change, and then *flow will direct us to all parts of the code that are broken.*
 
 ## Some Flow Concepts and Terminology
 
@@ -176,21 +178,65 @@ type MyState = {|
 
 This means that an object of type `MyState` cannot have any extra properties. (This is similar to `$Shape`, but also does not make every field optional!)
 
-## Getting Started
+## Part 1: Leaning on flow for refactoring
 
-As we get started, please check out the tags `v1`, `v2`, etc. depending on the step you are on, and run `npm run flow:watch` and `npm start`. Navigate to `localhost:3000`.
+As we get started, please check out the tags `v1.1`, `v1.2`, etc. depending on the step you are on, and run `npm run flow:watch` and `npm start`. Navigate to `localhost:3000`.
 
-### Problem definition
-
-We will be doing our work in the context of the following use case:
+In this problem, we will do the following:
 
 * A two page form, each of which has two textual inputs.
 * A next button, which, when pressed:
-  * Determines whether there are errors. If there are errors, they render.
+  * Determines whether there are errors on that page. If there are errors, they render.
   * If there are no errors, transitions to the next page, OR makes a mocked API request.
+
+### Step 1: Defining our types and some utility functions
+
+> This is tag `v1.1`
+
+We define all of our types in `src/form/form-types` and some utility functions in `src/form/form-utilities`.
+We will be doing our work in the context of the following use case:
+
+### Step 2: Writing the components
+
+> This is tag `v1.2`
+
+Now, we create the components `src/form/index.jsx`, `src/form/Page1.jsx` and `src/form/Page2.jsx`. In addition, we define the pages in `src/form/form-pages`.
+
+### Step 3: Introduce a typo
+
+> This is tag `v1.3`
+
+Now, we introduce a type in `idealOccupation`. Note that `flow` complains, although the form still runs. The only way we know that an error had occured is that the API request fails!
+
+In addition, if `idealOccupation` had been an optional field, we potentially never would have known that the form was broken! We would only have noticed later, when the `idealOccupation` column was not populated in the database.
+
+### Step 4: Introduce a refactor
+
+> This is tags `v1.4.1` and `v1.4.2`
+
+Now, we introduce a refactor.
+
+* **tag `v1.4.1`**: If we remove a field, we are essentially introducing a typo. However, we will fix it from the other side: instead of fixing the typo, we remove all references to the old field. (Fixing the type errors is left as an exercise to the reader, and will be done during the demo.)
+* **tag `v1.4.2`**: If we add a field, flow will imperfectly guide us through adding more fields to the rest of the code.
+
+## Part 2: Using Union types for to prevent logic errors
+
+As we get started, please check out the tags `v2.1`, `v2.2`, etc. depending on the step you are on, and run `npm run flow:watch` and `npm start`. Navigate to `localhost:3000`.
 
 ### Step 1: Defining our types
 
-> This is tag `v1`
+> This is tag `v2.1`
 
-We 
+We will define our primary types: `Customer` and `Status`, which is a union of `VisibleStatus` and `InvisibleStatus`.
+
+### Step 2: Writing the components
+
+> This is tag `v2.2`
+
+We create our components: a top level component, a left-hand side visibility selector, and a right-hand side preferred name input.
+
+### Step 3: Attempting to introduce logic errors
+
+> This is tag `v2.3`
+
+Now, we attempt to simplify the code in a few places that could introduce logic errors. Note how flow complains!
