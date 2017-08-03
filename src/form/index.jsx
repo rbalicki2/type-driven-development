@@ -5,7 +5,7 @@ import { getErrors, makeApiCall, getApiData } from 'src/form/form-utilities';
 import { initialPage } from 'src/form/form-pages';
 
 // $FlowFixMe
-import { Form, FormGroup, Button } from 'react-bootstrap';
+import { Col, Form, FormGroup, Button } from 'react-bootstrap';
 
 export default class OuterForm extends Component {
   state: FormState = {
@@ -80,19 +80,21 @@ export default class OuterForm extends Component {
   }
 
   render() {
-    return <Form>
-      <FormGroup>
-        <h2>Flow Form Demo</h2>
-      </FormGroup>
-      { this.renderForm() }
-      <FormGroup>
-        <Button
-          bsStyle="primary"
-          onClick={() => this.onSubmit()}
-        >
-          Next
-        </Button>
-      </FormGroup>
-    </Form>;
+    return <Col xs={12}>
+      <Form>
+        <FormGroup>
+          <h2>Flow Form Demo</h2>
+        </FormGroup>
+        { this.renderForm() }
+        <FormGroup>
+          <Button
+            bsStyle="primary"
+            onClick={() => this.onSubmit()}
+          >
+            Next
+          </Button>
+        </FormGroup>
+      </Form>
+    </Col>;
   }
 }

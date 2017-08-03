@@ -6,8 +6,8 @@ import { render } from 'react-dom';
 // $FlowFixMe
 import 'bootstrap/dist/css/bootstrap.css';
 // $FlowFixMe
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Grid, Row } from 'react-bootstrap';
 import Routes from 'src/Routes';
 
-render(<Grid><Row><Col xs={12}><Routes /></Col></Row></Grid>,
+render(<Grid><Row><Routes /></Row></Grid>,
   document.getElementById('app'));
