@@ -18,7 +18,7 @@ export default class FormPage1 extends Component {
       <FormGroup validationState={this.hasErrorFor('firstName') ? 'error' : null}>
         <ControlLabel>First Name</ControlLabel>
         <FormControl
-          value={this.props.formData.firstName || ''}
+          value={this.props.formData.firstName}
           onChange={({ target: { value } }) => this.props.updateFormData({
             firstName: value,
           })}
@@ -31,7 +31,7 @@ export default class FormPage1 extends Component {
       <FormGroup validationState={this.hasErrorFor('lastName') ? 'error' : null}>
         <ControlLabel>Last Name</ControlLabel>
         <FormControl
-          value={this.props.formData.lastName || ''}
+          value={this.props.formData.lastName}
           onChange={({ target: { value } }) => this.props.updateFormData({
             lastName: value,
           })}

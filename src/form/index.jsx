@@ -10,7 +10,12 @@ import { Col, Form, FormGroup, Button, Panel } from 'react-bootstrap';
 export default class OuterForm extends Component {
   state: FormState = {
     currentPage: initialPage,
-    data: {},
+    data: {
+      firstName: '',
+      lastName: '',
+      occupation: '',
+      idealOccupation: '',
+    },
     currentPageHasSubmitted: false,
   };
 

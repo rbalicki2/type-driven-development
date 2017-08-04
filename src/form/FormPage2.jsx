@@ -18,7 +18,7 @@ export default class FormPage1 extends Component {
       <FormGroup validationState={this.hasErrorFor('occupation') ? 'error' : null}>
         <ControlLabel>Occupation</ControlLabel>
         <FormControl
-          value={this.props.formData.occupation || ''}
+          value={this.props.formData.occupation}
           onChange={({ target: { value } }) => this.props.updateFormData({
             occupation: value,
           })}
@@ -31,7 +31,7 @@ export default class FormPage1 extends Component {
       <FormGroup validationState={this.hasErrorFor('idealOccupation') ? 'error' : null}>
         <ControlLabel>Ideal Occupation</ControlLabel>
         <FormControl
-          value={this.props.formData.idealOccupation || ''}
+          value={this.props.formData.idealOccupation}
           onChange={({ target: { value } }) => this.props.updateFormData({
             idealOccupation: value,
           })}
