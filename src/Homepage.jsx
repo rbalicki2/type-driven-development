@@ -8,7 +8,7 @@ export default class Dashboard extends Component {
       <h2>Type driven development demo</h2>
       <ul>
         <li><a href="/#/form">Part 1: Building large objects and refactoring</a></li>
-        <li><a href="/#/form">Part 2: Union types and preventing logical errors</a></li>
+        <li><a href="/#/union">Part 2: Union types and preventing logical errors</a></li>
       </ul>
     </Col>;
   }
