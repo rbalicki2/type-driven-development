@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import { type FormState, type FormPageProps, type FormErrors, type Field, type FormData } from 'src/form/form-types';
-import { getErrors, makeApiCall, getApiData } from 'src/form/form-utilities';
+import { getErrors, makeApiCall } from 'src/form/form-utilities';
 import { initialPage } from 'src/form/form-pages';
 
 // $FlowFixMe
@@ -31,7 +31,7 @@ export default class OuterForm extends Component {
         currentPageHasSubmitted: false,
       });
     } else {
-      makeApiCall(getApiData(data));
+      makeApiCall(data);
     }
   }
 

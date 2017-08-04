@@ -2,10 +2,10 @@
 
 // ***** Core Form Data Types *****
 export type FormData = {|
-  firstName?: string,
-  lastName?: string,
-  occupation?: string,
-  idealOccupation?: string,
+  firstName: string,
+  lastName: string,
+  occupation: string,
+  idealOccupation: string,
 |};
 
 export type Field = $Keys<FormData>;
@@ -31,14 +31,6 @@ export type Page = {|
 //       component and child components *****
 export type FormPageProps = {|
   formData: FormData,
-  updateFormData: (FormData) => void,
+  updateFormData: ($Shape<FormData>) => void,
   errors: FormErrors,
-|};
-
-// ***** These are the types that the API accepts *****
-export type ApiData = {|
-  firstName: string,
-  lastName: string,
-  occupation: string,
-  idealOccupation: string,
 |};

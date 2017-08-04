@@ -2,7 +2,6 @@
 import {
   type FormData,
   type FormErrors,
-  type ApiData,
 } from 'src/form/form-types';
 
 // eslint can't handle generic functions
@@ -36,17 +35,8 @@ export const getErrors = (data: FormData): FormErrors => {
   return map;
 };
 
-// Convert the type we are creating (FormData) to ApiData.
-// In practice, this conversion might be much more complicated.
-export const getApiData = (data: FormData): ApiData => ({
-  firstName: convertToNonOptional(data.firstName),
-  lastName: convertToNonOptional(data.lastName),
-  occupation: convertToNonOptional(data.occupation),
-  idealOccupation: convertToNonOptional(data.idealOccupation),
-});
-
 // eslint-disable-next-line
-export const makeApiCall = (data: ApiData) => {
+export const makeApiCall = (data: FormData) => {
   // eslint-disable-next-line
   alert('Making api call');
 };
