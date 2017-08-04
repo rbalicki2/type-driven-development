@@ -74,6 +74,11 @@ export default {
   ].concat(isProduction
     ? [
       new webpack.optimize.UglifyJsPlugin({ minimize: true, sourceMap: false }),
+      new webpack.DefinePlugin({
+        'process.env': {
+          NODE_ENV: JSON.stringify('production'),
+        },
+      }),
     ]
     : [new webpack.HotModuleReplacementPlugin()]
   ),
